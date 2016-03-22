@@ -1,0 +1,11 @@
+{
+  "name": "AugurToSolidityAbi",
+  "version": "1.0.0",
+  "description": "Uses Augur Tx and serpert to generate a Solidity ABI which can be used for an api as Nethereum",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

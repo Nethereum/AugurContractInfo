@@ -1,0 +1,2564 @@
+[
+    {
+        "name": "faucets",
+        "functions": [
+            {
+                "functionName": "cashFaucet",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "reputationFaucet",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "fundNewAccount",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0x895d32f2db7d01ebb50053f9e48aacf26584fe40"
+    },
+    {
+        "name": "output",
+        "functions": [
+            {
+                "functionName": "init",
+                "parameters": ""
+            },
+            {
+                "functionName": "cashFaucet",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "reputationFaucet",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "fundNewAccount",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "commitTrade",
+                "parameters": "market, hash",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "makeMarketHash",
+                "parameters": "market, outcome, amount, limit"
+            },
+            {
+                "functionName": "buyShares",
+                "parameters": "branch, market, outcome, amount, limit",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "sellShares",
+                "parameters": "branch, market, outcome, amount, limit",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "closeMarket",
+                "parameters": "branch, market",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "claimProceeds",
+                "parameters": "branch, market",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "returnLiquidity",
+                "parameters": "branch, market, events: arr"
+            },
+            {
+                "functionName": "createSubbranch",
+                "parameters": "description:str, periodLength, parent, tradingFee, oracleOnly",
+                "signature": "siiii",
+                "returns": "hash",
+                "send": true
+            },
+            {
+                "functionName": "createEvent",
+                "parameters": "branch, description:str, expDate, minValue, maxValue, numOutcomes",
+                "signature": "isiiii",
+                "send": true
+            },
+            {
+                "functionName": "twoOutcomes",
+                "parameters": "market, winningOutcome: arr, events: arr"
+            },
+            {
+                "functionName": "valueCalcTwo",
+                "parameters": "market, winningOutcome: arr, events: arr"
+            },
+            {
+                "functionName": "getReportedPeriod",
+                "parameters": "branch, period, reporter",
+                "signature": "iii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getReportable",
+                "parameters": "votePeriod, eventID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "setReportable",
+                "parameters": "votePeriod, eventID"
+            },
+            {
+                "functionName": "setEventRequired",
+                "parameters": "branch, period, event"
+            },
+            {
+                "functionName": "getRRUpToDate",
+                "parameters": "",
+                "returns": "number"
+            },
+            {
+                "functionName": "setRRUpToDate",
+                "parameters": ""
+            },
+            {
+                "functionName": "getNumReportsExpectedEvent",
+                "parameters": "branch, votePeriod, eventID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getNumReportsEvent",
+                "parameters": "branch, votePeriod, eventID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "setNumReportsExpectedEvent",
+                "parameters": "branch, votePeriod, eventID, num"
+            },
+            {
+                "functionName": "setNumReportsEvent",
+                "parameters": "branch, votePeriod, eventID, num"
+            },
+            {
+                "functionName": "getReport",
+                "parameters": "branch, period, event",
+                "signature": "iii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getBeforeRep",
+                "parameters": "branch,period",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getAfterRep",
+                "parameters": "branch, period",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setBeforeRep",
+                "parameters": "branch, period, rep"
+            },
+            {
+                "functionName": "setAfterRep",
+                "parameters": "branch, period, rep"
+            },
+            {
+                "functionName": "getNumReportsActual",
+                "parameters": "branch, votePeriod",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getSubmittedHash",
+                "parameters": "branch, period, reporter",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "makeHash",
+                "parameters": "salt, report, eventID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "submitReportHash",
+                "parameters": "branch, reportHash, votePeriod, eventID, eventIndex",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "submitReport",
+                "parameters": "branch, votePeriod, eventIndex, salt, report, eventID, ethics",
+                "signature": "iiiiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "calculateReportingThreshold",
+                "parameters": "branch, eventID, votePeriod",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getNumEventsToReport",
+                "parameters": "branch, votePeriod",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "needsReportingOn",
+                "parameters": "event"
+            },
+            {
+                "functionName": "validateReport",
+                "parameters": "eventID, branch, votePeriod, report"
+            },
+            {
+                "functionName": "createMarket",
+                "parameters": "branch, description:str, alpha, initialLiquidity, tradingFee, events:arr, forkSelection",
+                "signature": "isiiiai",
+                "send": true
+            },
+            {
+                "functionName": "updateTradingFee",
+                "parameters": "branch, market, tradingFee"
+            },
+            {
+                "functionName": "moveMarketAndAssocEvents",
+                "parameters": "market, fork"
+            },
+            {
+                "functionName": "pushMarketForward",
+                "parameters": "branch, market"
+            },
+            {
+                "functionName": "resolve99Market",
+                "parameters": "branch, market, resolveRegardless"
+            },
+            {
+                "functionName": "sendReputation",
+                "parameters": "branch, recver, value",
+                "signature": "iii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "sendDormantRep",
+                "parameters": "branch, recver, value"
+            },
+            {
+                "functionName": "convertToDormantRep",
+                "parameters": "branch, value"
+            },
+            {
+                "functionName": "convertToActiveRep",
+                "parameters": "branch, value"
+            },
+            {
+                "functionName": "catch",
+                "parameters": "x"
+            },
+            {
+                "functionName": "resolveBinary",
+                "parameters": "event, market, branch, votingPeriodEvent, period"
+            },
+            {
+                "functionName": "resolveCategoricalOrScalar",
+                "parameters": "scaled_min, scaled_max, event, market, branch, votingPeriodEvent, period"
+            },
+            {
+                "functionName": "determineWinningOutcomes",
+                "parameters": "events: arr, numberEvents, branch, market"
+            },
+            {
+                "functionName": "transferShares",
+                "parameters": "branch, market, outcome, amount, to"
+            },
+            {
+                "functionName": "addComment",
+                "parameters": "market, ipfsHash"
+            },
+            {
+                "functionName": "addMetadata",
+                "parameters": "market, ipfsHash"
+            },
+            {
+                "functionName": "initialPenalizedSetting",
+                "parameters": "branch, reporter, upto"
+            },
+            {
+                "functionName": "penalizeWrong",
+                "parameters": "branch, event",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "getDenominator",
+                "parameters": "branch, period"
+            },
+            {
+                "functionName": "penalizeNotEnoughReports",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "collectFees",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "penalizationCatchup",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "slashRep",
+                "parameters": "branch, salt, report, reporter, eventID",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "incrementPeriodAfterReporting",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "proportionCorrect",
+                "parameters": "event, branch, period",
+                "signature": "iii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getRRDone",
+                "parameters": "branch, reporter"
+            },
+            {
+                "functionName": "fourOutcomes",
+                "parameters": "market, winningOutcome: arr, events: arr"
+            },
+            {
+                "functionName": "valueCalcFour",
+                "parameters": "market, winningOutcome: arr, events: arr"
+            },
+            {
+                "functionName": "createSingleEventMarket",
+                "parameters": "branch, description:str, expirationBlock, minValue, maxValue, numOutcomes, alpha, initialLiquidity, tradingFee, forkSelection",
+                "signature": "isiiiiiiii",
+                "returns": "hash",
+                "send": true
+            },
+            {
+                "functionName": "eightOutcomes",
+                "parameters": "market, winningOutcome: arr, events: arr"
+            },
+            {
+                "functionName": "valueCalcEight",
+                "parameters": "market, winningOutcome: arr, events: arr"
+            },
+            {
+                "functionName": "oneOutcome",
+                "parameters": "market, winningOutcome"
+            },
+            {
+                "functionName": "valueCalcOne",
+                "parameters": "market, winningOutcome"
+            },
+            {
+                "functionName": "getDescription",
+                "parameters": "ID",
+                "signature": "i",
+                "returns": "string"
+            },
+            {
+                "functionName": "getDescriptionLength",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "getCreator",
+                "parameters": "ID",
+                "signature": "i",
+                "returns": "address"
+            },
+            {
+                "functionName": "getCreationFee",
+                "parameters": "ID",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setInfo",
+                "parameters": "ID, description: str, creator, fee",
+                "signature": "isii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "checkWhitelist",
+                "parameters": "address"
+            },
+            {
+                "functionName": "checkContractWhitelist",
+                "parameters": "contract, address"
+            },
+            {
+                "functionName": "setWhitelist",
+                "parameters": "contract, addresses:arr"
+            },
+            {
+                "functionName": "getRepByIndex",
+                "parameters": "branch, repIndex",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getRepBalance",
+                "parameters": "branch, address",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getDormantRepByIndex",
+                "parameters": "branch, repIndex"
+            },
+            {
+                "functionName": "getDormantRepBalance",
+                "parameters": "branch, address"
+            },
+            {
+                "functionName": "getReporterID",
+                "parameters": "branch, index",
+                "signature": "ii",
+                "returns": "address"
+            },
+            {
+                "functionName": "getTotalRep",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getReputation",
+                "parameters": "address",
+                "signature": "i",
+                "returns": "number[]"
+            },
+            {
+                "functionName": "getNumberReporters",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "repIDToIndex",
+                "parameters": "branch, repID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "hashReport",
+                "parameters": "report: arr, salt",
+                "signature": "ai"
+            },
+            {
+                "functionName": "setInitialReporters",
+                "parameters": "parent, branchID"
+            },
+            {
+                "functionName": "claimInitialRep",
+                "parameters": "parent, branchID"
+            },
+            {
+                "functionName": "addReporter",
+                "parameters": "branch, sender"
+            },
+            {
+                "functionName": "addRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "subtractRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "setRep",
+                "parameters": "branch, index, newRep"
+            },
+            {
+                "functionName": "addDormantRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "subtractDormantRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "setSaleDistribution",
+                "parameters": "addresses: arr, balances: arr, branchID"
+            },
+            {
+                "functionName": "fx_exp",
+                "parameters": "x"
+            },
+            {
+                "functionName": "fx_log",
+                "parameters": "x"
+            },
+            {
+                "functionName": "sqrt",
+                "parameters": "n"
+            },
+            {
+                "functionName": "getEvents",
+                "parameters": "branch, expDateIndex",
+                "signature": "ii",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getEventIndex",
+                "parameters": "period, eventID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "setNumEventsToReportOn",
+                "parameters": "branch, expDateIndex"
+            },
+            {
+                "functionName": "getNumEventsToReportOn",
+                "parameters": "branch, expDateIndex"
+            },
+            {
+                "functionName": "getPeriodVolume",
+                "parameters": "branch, expIndex"
+            },
+            {
+                "functionName": "getNumberEvents",
+                "parameters": "branch, expDateIndex",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getEvent",
+                "parameters": "branch, expDateIndex, eventIndex",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getTotalRepReported",
+                "parameters": "branch, expDateIndex",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getReportHash",
+                "parameters": "branch, expDateIndex, reporter, event",
+                "signature": "iiii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "addEvent",
+                "parameters": "branch, futurePeriod, eventID",
+                "signature": "iii",
+                "send": true
+            },
+            {
+                "functionName": "removeEvent",
+                "parameters": "branch, period"
+            },
+            {
+                "functionName": "setTotalRepReported",
+                "parameters": "branch, expDateIndex, repReported",
+                "signature": "iii",
+                "send": true
+            },
+            {
+                "functionName": "addPeriodVolume",
+                "parameters": "branch, expIndex, volume"
+            },
+            {
+                "functionName": "setReportHash",
+                "parameters": "branch, expDateIndex, reporter, reportHash, event"
+            },
+            {
+                "functionName": "moveEventsToCurrentPeriod",
+                "parameters": "branch, currentVotePeriod, currentPeriod",
+                "signature": "iii",
+                "send": true
+            },
+            {
+                "functionName": "initDefaultBranch",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "getOracleOnly",
+                "parameters": "branch"
+            },
+            {
+                "functionName": "getVotePeriod",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getPeriodLength",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "setInitialBalance",
+                "parameters": "branch, period, balance"
+            },
+            {
+                "functionName": "getInitialBalance",
+                "parameters": "branch, period"
+            },
+            {
+                "functionName": "getMarketsInBranch",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getSomeMarketsInBranch",
+                "parameters": "branch, initial, last"
+            },
+            {
+                "functionName": "getNumMarketsBranch",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getMinTradingFee",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getBranches",
+                "parameters": "",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getNumBranches",
+                "parameters": "",
+                "returns": "number"
+            },
+            {
+                "functionName": "getBranch",
+                "parameters": "branchNumber",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getCreationDate",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "initializeBranch",
+                "parameters": "ID, currentVotePeriod, periodLength, minTradingFee, oracleOnly, parentPeriod"
+            },
+            {
+                "functionName": "getParentPeriod",
+                "parameters": "branch"
+            },
+            {
+                "functionName": "incrementPeriod",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "addMarketToBranch",
+                "parameters": "branch, market"
+            },
+            {
+                "functionName": "getTotalSharesPurchased",
+                "parameters": "market"
+            },
+            {
+                "functionName": "getMarketEvent",
+                "parameters": "market, index"
+            },
+            {
+                "functionName": "getMarketInfo",
+                "parameters": "marketID",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getMarketsInfo",
+                "parameters": "branch, offset, numMarketsToLoad",
+                "signature": "iii",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getForkSelection",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getMarketEvents",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getSharesPurchased",
+                "parameters": "market, outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getVolume",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getParticipantNumber",
+                "parameters": "market, address",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getParticipantID",
+                "parameters": "market, participantNumber",
+                "signature": "ii",
+                "returns": "address"
+            },
+            {
+                "functionName": "getParticipantSharesPurchased",
+                "parameters": "market, participantNumber, outcome",
+                "signature": "iii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getNumEvents",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getCurrentParticipantNumber",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getAlpha",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getCumScale",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getMarketNumOutcomes",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getTradingPeriod",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getOriginalTradingPeriod",
+                "parameters": "market"
+            },
+            {
+                "functionName": "setTradingPeriod",
+                "parameters": "market, period"
+            },
+            {
+                "functionName": "getTradingFee",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getBranchID",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "lsLmsr",
+                "parameters": "marketID",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "price",
+                "parameters": "market, outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initializeMarket",
+                "parameters": "marketID, events: arr, tradingPeriod, tradingFee, branch, forkSelection",
+                "signature": "iaiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "addParticipant",
+                "parameters": "market, address"
+            },
+            {
+                "functionName": "modifyShares",
+                "parameters": "marketID, outcome, amount",
+                "signature": "iii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "modifyParticipantShares",
+                "parameters": "branch, marketID, participantNumber, outcome, amount"
+            },
+            {
+                "functionName": "initialLiquidityAmount",
+                "parameters": "market, outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setInitialLiquidityAmount",
+                "parameters": "market, outcome, amount"
+            },
+            {
+                "functionName": "setWinningOutcomes",
+                "parameters": "market, outcomes: arr"
+            },
+            {
+                "functionName": "getWinningOutcomes",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number[]"
+            },
+            {
+                "functionName": "initialLiquiditySetup",
+                "parameters": "marketID, alpha, cumScale, numOutcomes",
+                "signature": "iiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setTradingFee",
+                "parameters": "market, fee"
+            },
+            {
+                "functionName": "setPushedForward",
+                "parameters": "market, bool"
+            },
+            {
+                "functionName": "getPushedForward",
+                "parameters": "market"
+            },
+            {
+                "functionName": "getBondsMan",
+                "parameters": "market"
+            },
+            {
+                "functionName": "getEventInfo",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getEventBranch",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getPushedBack",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getExpiration",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getOriginalExpiration",
+                "parameters": "event"
+            },
+            {
+                "functionName": "setExpiration",
+                "parameters": "event, date"
+            },
+            {
+                "functionName": "getOutcome",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getEthics",
+                "parameters": "event"
+            },
+            {
+                "functionName": "setEthics",
+                "parameters": "event, ethicality"
+            },
+            {
+                "functionName": "getEthical",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getFinal",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getMinValue",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getMaxValue",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getNumOutcomes",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "setUncaughtOutcome",
+                "parameters": "event, outcome"
+            },
+            {
+                "functionName": "getUncaughtOutcome",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initializeEvent",
+                "parameters": "ID, branch, expirationDate, minValue, maxValue, numOutcomes"
+            },
+            {
+                "functionName": "addMarket",
+                "parameters": "event, marketID",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "getMarkets",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getMarket",
+                "parameters": "event, marketIndex"
+            },
+            {
+                "functionName": "getNumMarkets",
+                "parameters": "event"
+            },
+            {
+                "functionName": "setOutcome",
+                "parameters": "ID, outcome",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setReportingThreshold",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getNumReports",
+                "parameters": "event"
+            },
+            {
+                "functionName": "addNumReports",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getReportingThreshold",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getmode",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setmode",
+                "parameters": "event, mode"
+            },
+            {
+                "functionName": "setFinal",
+                "parameters": "event, final"
+            },
+            {
+                "functionName": "setRejected",
+                "parameters": "event, period, uncaughtOutcome"
+            },
+            {
+                "functionName": "setPushedBack",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getRejected",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getRejectedPeriod",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getRejectedUncaught",
+                "parameters": "event"
+            },
+            {
+                "functionName": "balance",
+                "parameters": "address",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initiateOwner",
+                "parameters": "account",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "send",
+                "parameters": "recver, value",
+                "signature": "ii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "sendFrom",
+                "parameters": "recver, value, from",
+                "signature": "iii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "subtractCash",
+                "parameters": "ID, amount"
+            },
+            {
+                "functionName": "addCash",
+                "parameters": "ID, amount",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setCash",
+                "parameters": "address, balance",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "depositEther",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "withdrawEther",
+                "parameters": "to, value",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0x9973183349c7fc536041d65108431e736cbb6f7e"
+    },
+    {
+        "name": "createSingleEventMarket",
+        "functions": [
+            {
+                "functionName": "createSingleEventMarket",
+                "parameters": "branch, description:str, expirationBlock, minValue, maxValue, numOutcomes, alpha, initialLiquidity, tradingFee, forkSelection",
+                "signature": "isiiiiiiii",
+                "returns": "hash",
+                "send": true
+            }
+        ],
+        "to": "0xd5283e4f818de5c984f2221a421983f6040961c1"
+    },
+    {
+        "name": "cash",
+        "functions": [
+            {
+                "functionName": "init",
+                "parameters": ""
+            },
+            {
+                "functionName": "balance",
+                "parameters": "address",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initiateOwner",
+                "parameters": "account",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "send",
+                "parameters": "recver, value",
+                "signature": "ii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "sendFrom",
+                "parameters": "recver, value, from",
+                "signature": "iii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "subtractCash",
+                "parameters": "ID, amount"
+            },
+            {
+                "functionName": "addCash",
+                "parameters": "ID, amount",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setCash",
+                "parameters": "address, balance",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "depositEther",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "withdrawEther",
+                "parameters": "to, value",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0x154edcf6418038f863c6cd3b395a16a02c037ae3"
+    },
+    {
+        "name": "ether",
+        "functions": [
+            {
+                "functionName": "depositEther",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "withdrawEther",
+                "parameters": "to, value",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "balance",
+                "parameters": "address",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initiateOwner",
+                "parameters": "account",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "send",
+                "parameters": "recver, value",
+                "signature": "ii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "sendFrom",
+                "parameters": "recver, value, from",
+                "signature": "iii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "subtractCash",
+                "parameters": "ID, amount"
+            },
+            {
+                "functionName": "addCash",
+                "parameters": "ID, amount",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setCash",
+                "parameters": "address, balance",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0x154edcf6418038f863c6cd3b395a16a02c037ae3"
+    },
+    {
+        "name": "subcurrency",
+        "functions": [
+            {
+                "functionName": "sendSubCurrency",
+                "parameters": "recver, value, subcurrency"
+            },
+            {
+                "functionName": "sendFromSubCurrency",
+                "parameters": "recver, value, from, subcurrency"
+            },
+            {
+                "functionName": "subtractSubCurrency",
+                "parameters": "address, amount, subcurrency"
+            },
+            {
+                "functionName": "addSubCurrency",
+                "parameters": "address, amount, subcurrency"
+            },
+            {
+                "functionName": "subCurrencyBalance",
+                "parameters": "address, subcurrency"
+            },
+            {
+                "functionName": "initiateOwner",
+                "parameters": "account, subcurrency",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0x154edcf6418038f863c6cd3b395a16a02c037ae3"
+    },
+    {
+        "name": "info",
+        "functions": [
+            {
+                "functionName": "init",
+                "parameters": ""
+            },
+            {
+                "functionName": "getDescription",
+                "parameters": "ID",
+                "signature": "i",
+                "returns": "string"
+            },
+            {
+                "functionName": "getDescriptionLength",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "getCreator",
+                "parameters": "ID",
+                "signature": "i",
+                "returns": "address"
+            },
+            {
+                "functionName": "getCreationFee",
+                "parameters": "ID",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setInfo",
+                "parameters": "ID, description: str, creator, fee",
+                "signature": "isii",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0xf68dab896ca313cbd8946aecfdb965662a61aa3c"
+    },
+    {
+        "name": "branches",
+        "functions": [
+            {
+                "functionName": "init",
+                "parameters": ""
+            },
+            {
+                "functionName": "initDefaultBranch",
+                "parameters": "",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "getOracleOnly",
+                "parameters": "branch"
+            },
+            {
+                "functionName": "getVotePeriod",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getPeriodLength",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "setInitialBalance",
+                "parameters": "branch, period, balance"
+            },
+            {
+                "functionName": "getInitialBalance",
+                "parameters": "branch, period"
+            },
+            {
+                "functionName": "getMarketsInBranch",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getSomeMarketsInBranch",
+                "parameters": "branch, initial, last"
+            },
+            {
+                "functionName": "getNumMarketsBranch",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getMinTradingFee",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getBranches",
+                "parameters": "",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getNumBranches",
+                "parameters": "",
+                "returns": "number"
+            },
+            {
+                "functionName": "getBranch",
+                "parameters": "branchNumber",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getCreationDate",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "initializeBranch",
+                "parameters": "ID, currentVotePeriod, periodLength, minTradingFee, oracleOnly, parentPeriod"
+            },
+            {
+                "functionName": "getParentPeriod",
+                "parameters": "branch"
+            },
+            {
+                "functionName": "incrementPeriod",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "addMarketToBranch",
+                "parameters": "branch, market"
+            }
+        ],
+        "to": "0x513087e06ea1a05b858f6da58befb0012c775e63"
+    },
+    {
+        "name": "events",
+        "functions": [
+            {
+                "functionName": "getEventInfo",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getEventBranch",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getPushedBack",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getExpiration",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getOriginalExpiration",
+                "parameters": "event"
+            },
+            {
+                "functionName": "setExpiration",
+                "parameters": "event, date"
+            },
+            {
+                "functionName": "getOutcome",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getEthics",
+                "parameters": "event"
+            },
+            {
+                "functionName": "setEthics",
+                "parameters": "event, ethicality"
+            },
+            {
+                "functionName": "getEthical",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getFinal",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getMinValue",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getMaxValue",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getNumOutcomes",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "setUncaughtOutcome",
+                "parameters": "event, outcome"
+            },
+            {
+                "functionName": "getUncaughtOutcome",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initializeEvent",
+                "parameters": "ID, branch, expirationDate, minValue, maxValue, numOutcomes"
+            },
+            {
+                "functionName": "addMarket",
+                "parameters": "event, marketID",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "getMarkets",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getMarket",
+                "parameters": "event, marketIndex"
+            },
+            {
+                "functionName": "getNumMarkets",
+                "parameters": "event"
+            },
+            {
+                "functionName": "setOutcome",
+                "parameters": "ID, outcome",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setReportingThreshold",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getNumReports",
+                "parameters": "event"
+            },
+            {
+                "functionName": "addNumReports",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getReportingThreshold",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getmode",
+                "parameters": "event",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setmode",
+                "parameters": "event, mode"
+            },
+            {
+                "functionName": "setFinal",
+                "parameters": "event, final"
+            },
+            {
+                "functionName": "setRejected",
+                "parameters": "event, period, uncaughtOutcome"
+            },
+            {
+                "functionName": "setPushedBack",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getRejected",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getRejectedPeriod",
+                "parameters": "event"
+            },
+            {
+                "functionName": "getRejectedUncaught",
+                "parameters": "event"
+            }
+        ],
+        "to": "0x2d446b3950fc5ea3cf18804b9ab8f79357978ab9"
+    },
+    {
+        "name": "consensus",
+        "functions": [
+            {
+                "functionName": "initialPenalizedSetting",
+                "parameters": "branch, reporter, upto"
+            },
+            {
+                "functionName": "penalizeWrong",
+                "parameters": "branch, event",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "getDenominator",
+                "parameters": "branch, period"
+            },
+            {
+                "functionName": "penalizeNotEnoughReports",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "collectFees",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "penalizationCatchup",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "slashRep",
+                "parameters": "branch, salt, report, reporter, eventID",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "incrementPeriodAfterReporting",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "proportionCorrect",
+                "parameters": "event, branch, period",
+                "signature": "iii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getRRDone",
+                "parameters": "branch, reporter"
+            }
+        ],
+        "to": "0xb816c3abdbb9967485f8645bc83143bb749572e0"
+    },
+    {
+        "name": "expiringEvents",
+        "functions": [
+            {
+                "functionName": "getEvents",
+                "parameters": "branch, expDateIndex",
+                "signature": "ii",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getEventIndex",
+                "parameters": "period, eventID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "setNumEventsToReportOn",
+                "parameters": "branch, expDateIndex"
+            },
+            {
+                "functionName": "getNumEventsToReportOn",
+                "parameters": "branch, expDateIndex"
+            },
+            {
+                "functionName": "getPeriodVolume",
+                "parameters": "branch, expIndex"
+            },
+            {
+                "functionName": "getNumberEvents",
+                "parameters": "branch, expDateIndex",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getEvent",
+                "parameters": "branch, expDateIndex, eventIndex",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getTotalRepReported",
+                "parameters": "branch, expDateIndex",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getReportHash",
+                "parameters": "branch, expDateIndex, reporter, event",
+                "signature": "iiii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "addEvent",
+                "parameters": "branch, futurePeriod, eventID",
+                "signature": "iii",
+                "send": true
+            },
+            {
+                "functionName": "removeEvent",
+                "parameters": "branch, period"
+            },
+            {
+                "functionName": "setTotalRepReported",
+                "parameters": "branch, expDateIndex, repReported",
+                "signature": "iii",
+                "send": true
+            },
+            {
+                "functionName": "addPeriodVolume",
+                "parameters": "branch, expIndex, volume"
+            },
+            {
+                "functionName": "setReportHash",
+                "parameters": "branch, expDateIndex, reporter, reportHash, event"
+            },
+            {
+                "functionName": "moveEventsToCurrentPeriod",
+                "parameters": "branch, currentVotePeriod, currentPeriod",
+                "signature": "iii",
+                "send": true
+            }
+        ],
+        "to": "0x0ed2d24d31ed33b658aa2f1108698d5bc3a8b622"
+    },
+    {
+        "name": "p2pWagers",
+        "functions": [
+            {
+                "functionName": "getEvent",
+                "parameters": "ID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getAmtBet",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "getOutcomeOneBettor",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "getOutcomeZeroBettor",
+                "parameters": "ID"
+            },
+            {
+                "functionName": "makeBet",
+                "parameters": "eventID, amtToBet"
+            },
+            {
+                "functionName": "sendMoneytoBet",
+                "parameters": "betID, outcome"
+            },
+            {
+                "functionName": "closeBet",
+                "parameters": "betID"
+            }
+        ],
+        "to": "0x0ed2d24d31ed33b658aa2f1108698d5bc3a8b622"
+    },
+    {
+        "name": "markets",
+        "functions": [
+            {
+                "functionName": "getTotalSharesPurchased",
+                "parameters": "market"
+            },
+            {
+                "functionName": "getMarketEvent",
+                "parameters": "market, index"
+            },
+            {
+                "functionName": "getMarketInfo",
+                "parameters": "marketID",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getMarketsInfo",
+                "parameters": "branch, offset, numMarketsToLoad",
+                "signature": "iii",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getForkSelection",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getMarketEvents",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "hash[]"
+            },
+            {
+                "functionName": "getSharesPurchased",
+                "parameters": "market, outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getVolume",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getParticipantNumber",
+                "parameters": "market, address",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getParticipantID",
+                "parameters": "market, participantNumber",
+                "signature": "ii",
+                "returns": "address"
+            },
+            {
+                "functionName": "getParticipantSharesPurchased",
+                "parameters": "market, participantNumber, outcome",
+                "signature": "iii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getNumEvents",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getCurrentParticipantNumber",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getAlpha",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getCumScale",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getMarketNumOutcomes",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getTradingPeriod",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "getOriginalTradingPeriod",
+                "parameters": "market"
+            },
+            {
+                "functionName": "setTradingPeriod",
+                "parameters": "market, period"
+            },
+            {
+                "functionName": "getTradingFee",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getBranchID",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "hash"
+            },
+            {
+                "functionName": "lsLmsr",
+                "parameters": "marketID",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "price",
+                "parameters": "market, outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "initializeMarket",
+                "parameters": "marketID, events: arr, tradingPeriod, tradingFee, branch, forkSelection",
+                "signature": "iaiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "addParticipant",
+                "parameters": "market, address"
+            },
+            {
+                "functionName": "modifyShares",
+                "parameters": "marketID, outcome, amount",
+                "signature": "iii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "modifyParticipantShares",
+                "parameters": "branch, marketID, participantNumber, outcome, amount"
+            },
+            {
+                "functionName": "initialLiquidityAmount",
+                "parameters": "market, outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setInitialLiquidityAmount",
+                "parameters": "market, outcome, amount"
+            },
+            {
+                "functionName": "setWinningOutcomes",
+                "parameters": "market, outcomes: arr"
+            },
+            {
+                "functionName": "getWinningOutcomes",
+                "parameters": "market",
+                "signature": "i",
+                "returns": "number[]"
+            },
+            {
+                "functionName": "initialLiquiditySetup",
+                "parameters": "marketID, alpha, cumScale, numOutcomes",
+                "signature": "iiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "setTradingFee",
+                "parameters": "market, fee"
+            },
+            {
+                "functionName": "setPushedForward",
+                "parameters": "market, bool"
+            },
+            {
+                "functionName": "getPushedForward",
+                "parameters": "market"
+            },
+            {
+                "functionName": "getBondsMan",
+                "parameters": "market"
+            }
+        ],
+        "to": "0x4b2a8b1cc3a2f686d835bfc2ca0c20671676efb0"
+    },
+    {
+        "name": "odds_set.py",
+        "functions": [
+            {
+                "functionName": "check_prices",
+                "parameters": ""
+            },
+            {
+                "functionName": "lslmsr",
+                "parameters": "share_vector"
+            },
+            {
+                "functionName": "price",
+                "parameters": "outcome",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "optimize",
+                "parameters": ""
+            }
+        ],
+        "to": "0x4b2a8b1cc3a2f686d835bfc2ca0c20671676efb0"
+    },
+    {
+        "name": "reporting.se.whitelist",
+        "functions": [
+            {
+                "functionName": "init",
+                "parameters": ""
+            },
+            {
+                "functionName": "shared",
+                "parameters": ""
+            },
+            {
+                "functionName": "checkWhitelist",
+                "parameters": "addr"
+            },
+            {
+                "functionName": "checkContractWhitelist",
+                "parameters": "contract, address"
+            },
+            {
+                "functionName": "setWhitelist",
+                "parameters": "contract, addresses:arr"
+            },
+            {
+                "functionName": "getWhitelist",
+                "parameters": "contract"
+            },
+            {
+                "functionName": "getAccessibles",
+                "parameters": "address"
+            },
+            {
+                "functionName": "getBallot",
+                "parameters": "period"
+            },
+            {
+                "functionName": "getBallotItemType",
+                "parameters": "ballotItem"
+            },
+            {
+                "functionName": "hasVoted",
+                "parameters": "address"
+            },
+            {
+                "functionName": "getVotes",
+                "parameters": "address, period"
+            },
+            {
+                "functionName": "getReplacement",
+                "parameters": "ballotItem"
+            },
+            {
+                "functionName": "getDeletion",
+                "parameters": "ballotItem"
+            },
+            {
+                "functionName": "getAddition",
+                "parameters": "ballotItem"
+            },
+            {
+                "functionName": "getCurrentVotePeriod",
+                "parameters": ""
+            },
+            {
+                "functionName": "getEpoch",
+                "parameters": ""
+            },
+            {
+                "functionName": "whitelistVote",
+                "parameters": "hash"
+            },
+            {
+                "functionName": "propose_replacement",
+                "parameters": "from_addr,to_addr"
+            },
+            {
+                "functionName": "propose_addition",
+                "parameters": "address, contracts:arr"
+            },
+            {
+                "functionName": "propose_deletion",
+                "parameters": "address"
+            },
+            {
+                "functionName": "getRepByIndex",
+                "parameters": "branch, repIndex",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getRepBalance",
+                "parameters": "branch, address",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getReporterID",
+                "parameters": "branch, index",
+                "signature": "ii",
+                "returns": "address"
+            },
+            {
+                "functionName": "getTotalRep",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getNumberReporters",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "repIDToIndex",
+                "parameters": "branch, repID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "hashReport",
+                "parameters": "report: arr, salt",
+                "signature": "ai"
+            },
+            {
+                "functionName": "setInitialReporters",
+                "parameters": "parent, branchID"
+            },
+            {
+                "functionName": "addReporter",
+                "parameters": "branch, sender"
+            },
+            {
+                "functionName": "addRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "subtractRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "setRep",
+                "parameters": "branch, index, newRep"
+            }
+        ],
+        "to": "0x2828a20e3ce771571177928077bfbbcdd16df764"
+    },
+    {
+        "name": "reporting",
+        "functions": [
+            {
+                "functionName": "init",
+                "parameters": ""
+            },
+            {
+                "functionName": "checkWhitelist",
+                "parameters": "address"
+            },
+            {
+                "functionName": "checkContractWhitelist",
+                "parameters": "contract, address"
+            },
+            {
+                "functionName": "setWhitelist",
+                "parameters": "contract, addresses:arr"
+            },
+            {
+                "functionName": "getRepByIndex",
+                "parameters": "branch, repIndex",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getRepBalance",
+                "parameters": "branch, address",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getDormantRepByIndex",
+                "parameters": "branch, repIndex"
+            },
+            {
+                "functionName": "getDormantRepBalance",
+                "parameters": "branch, address"
+            },
+            {
+                "functionName": "getReporterID",
+                "parameters": "branch, index",
+                "signature": "ii",
+                "returns": "address"
+            },
+            {
+                "functionName": "getTotalRep",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getReputation",
+                "parameters": "address",
+                "signature": "i",
+                "returns": "number[]"
+            },
+            {
+                "functionName": "getNumberReporters",
+                "parameters": "branch",
+                "signature": "i",
+                "returns": "number"
+            },
+            {
+                "functionName": "repIDToIndex",
+                "parameters": "branch, repID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "hashReport",
+                "parameters": "report: arr, salt",
+                "signature": "ai"
+            },
+            {
+                "functionName": "setInitialReporters",
+                "parameters": "parent, branchID"
+            },
+            {
+                "functionName": "claimInitialRep",
+                "parameters": "parent, branchID"
+            },
+            {
+                "functionName": "addReporter",
+                "parameters": "branch, sender"
+            },
+            {
+                "functionName": "addRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "subtractRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "setRep",
+                "parameters": "branch, index, newRep"
+            },
+            {
+                "functionName": "addDormantRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "subtractDormantRep",
+                "parameters": "branch, index, value"
+            },
+            {
+                "functionName": "setSaleDistribution",
+                "parameters": "addresses: arr, balances: arr, branchID"
+            }
+        ],
+        "to": "0x2828a20e3ce771571177928077bfbbcdd16df764"
+    },
+    {
+        "name": "buy&sellShares",
+        "functions": [
+            {
+                "functionName": "commitTrade",
+                "parameters": "market, hash",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "makeMarketHash",
+                "parameters": "market, outcome, amount, limit"
+            },
+            {
+                "functionName": "buyShares",
+                "parameters": "branch, market, outcome, amount, limit",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "sellShares",
+                "parameters": "branch, market, outcome, amount, limit",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            }
+        ],
+        "to": "0xf37626aa99f29a4afe7406e386f68cc77be2cb6e"
+    },
+    {
+        "name": "createBranch",
+        "functions": [
+            {
+                "functionName": "createSubbranch",
+                "parameters": "description:str, periodLength, parent, tradingFee, oracleOnly",
+                "signature": "siiii",
+                "returns": "hash",
+                "send": true
+            }
+        ],
+        "to": "0x21b87e562066e36da0bc599b3d016efb6fe80913"
+    },
+    {
+        "name": "sendReputation",
+        "functions": [
+            {
+                "functionName": "sendReputation",
+                "parameters": "branch, recver, value",
+                "signature": "iii",
+                "returns": "unfix",
+                "send": true
+            },
+            {
+                "functionName": "sendDormantRep",
+                "parameters": "branch, recver, value"
+            },
+            {
+                "functionName": "convertToDormantRep",
+                "parameters": "branch, value"
+            },
+            {
+                "functionName": "convertToActiveRep",
+                "parameters": "branch, value"
+            }
+        ],
+        "to": "0x6b969e428c58d81429ef13240c0ecb3529aa91bb"
+    },
+    {
+        "name": "makeReports",
+        "functions": [
+            {
+                "functionName": "getReportedPeriod",
+                "parameters": "branch, period, reporter",
+                "signature": "iii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getReportable",
+                "parameters": "votePeriod, eventID",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "setReportable",
+                "parameters": "votePeriod, eventID"
+            },
+            {
+                "functionName": "setEventRequired",
+                "parameters": "branch, period, event"
+            },
+            {
+                "functionName": "getRRUpToDate",
+                "parameters": "",
+                "returns": "number"
+            },
+            {
+                "functionName": "setRRUpToDate",
+                "parameters": ""
+            },
+            {
+                "functionName": "getNumReportsExpectedEvent",
+                "parameters": "branch, votePeriod, eventID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getNumReportsEvent",
+                "parameters": "branch, votePeriod, eventID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "setNumReportsExpectedEvent",
+                "parameters": "branch, votePeriod, eventID, num"
+            },
+            {
+                "functionName": "setNumReportsEvent",
+                "parameters": "branch, votePeriod, eventID, num"
+            },
+            {
+                "functionName": "getReport",
+                "parameters": "branch, period, event",
+                "signature": "iii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getBeforeRep",
+                "parameters": "branch,period",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "getAfterRep",
+                "parameters": "branch, period",
+                "signature": "ii",
+                "returns": "unfix"
+            },
+            {
+                "functionName": "setBeforeRep",
+                "parameters": "branch, period, rep"
+            },
+            {
+                "functionName": "setAfterRep",
+                "parameters": "branch, period, rep"
+            },
+            {
+                "functionName": "getNumReportsActual",
+                "parameters": "branch, votePeriod",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "getSubmittedHash",
+                "parameters": "branch, period, reporter",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "makeHash",
+                "parameters": "salt, report, eventID",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "submitReportHash",
+                "parameters": "branch, reportHash, votePeriod, eventID, eventIndex",
+                "signature": "iiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "submitReport",
+                "parameters": "branch, votePeriod, eventIndex, salt, report, eventID, ethics",
+                "signature": "iiiiiii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "calculateReportingThreshold",
+                "parameters": "branch, eventID, votePeriod",
+                "signature": "iii",
+                "returns": "hash"
+            },
+            {
+                "functionName": "getNumEventsToReport",
+                "parameters": "branch, votePeriod",
+                "signature": "ii",
+                "returns": "number"
+            },
+            {
+                "functionName": "needsReportingOn",
+                "parameters": "event"
+            },
+            {
+                "functionName": "validateReport",
+                "parameters": "eventID, branch, votePeriod, report"
+            }
+        ],
+        "to": "0x79a406da9ea815fd8cbe75ba8a4cb6d493dbf9b4"
+    },
+    {
+        "name": "createEvent",
+        "functions": [
+            {
+                "functionName": "createEvent",
+                "parameters": "branch, description:str, expDate, minValue, maxValue, numOutcomes",
+                "signature": "isiiii",
+                "send": true
+            }
+        ],
+        "to": "0xfab258ae92a2fe25ae4e4ddb9e63fb1c691cc2aa"
+    },
+    {
+        "name": "createMarket",
+        "functions": [
+            {
+                "functionName": "createMarket",
+                "parameters": "branch, description:str, alpha, initialLiquidity, tradingFee, events:arr, forkSelection",
+                "signature": "isiiiai",
+                "send": true
+            },
+            {
+                "functionName": "updateTradingFee",
+                "parameters": "branch, market, tradingFee"
+            },
+            {
+                "functionName": "moveMarketAndAssocEvents",
+                "parameters": "market, fork"
+            },
+            {
+                "functionName": "pushMarketForward",
+                "parameters": "branch, market"
+            },
+            {
+                "functionName": "resolve99Market",
+                "parameters": "branch, market, resolveRegardless"
+            }
+        ],
+        "to": "0x8a1bbe841ceef103221ebcb7fc50bf3e0edc7773"
+    },
+    {
+        "name": "closeMarket",
+        "functions": [
+            {
+                "functionName": "closeMarket",
+                "parameters": "branch, market",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "claimProceeds",
+                "parameters": "branch, market",
+                "signature": "ii",
+                "returns": "number",
+                "send": true
+            },
+            {
+                "functionName": "returnLiquidity",
+                "parameters": "branch, market, events: arr"
+            }
+        ],
+        "to": "0x9973183349c7fc536041d65108431e736cbb6f7e"
+    }
+]

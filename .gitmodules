@@ -1,0 +1,3 @@
+[submodule "augur-core"]
+	path = augur-core
+	url = https://github.com/AugurProject/augur-core.git
