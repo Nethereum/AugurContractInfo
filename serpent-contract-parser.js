@@ -4,36 +4,39 @@
 
 "use strict";
 
-var functionParser = require("./python-functions-parser.js");
-var fs = require("fs");
-var path = require("path");
+import functionParser from "./python-functions-parser.js";
+import fs from "fs";
+import path from "path";
 
-module.exports = {
-    
-   parseFolder: function (folderPath, contractsReturn){
-     contractsReturn = typeof contractsReturn !== 'undefined' ? contractsReturn : new Array();
-     
-     var files = fs.readdirSync(folderPath);
-     files.forEach(function(file) {
-         if(file[0] !== '.'){
-             var filePath = folderPath + '/' + file;
-             var stat = fs.statSync(filePath);
-             if(stat.isDirectory()){
-                 this.parseFolder(filePath, contractsReturn);
-             }else{
-                 contractsReturn.push(this.parseFile(filePath));
-             }   
-         }
-     }, this);
-     return contractsReturn;
-    },
-    
-   parseFile : function (filePath) {
-        var text = fs.readFileSync(filePath, 'utf8');
-        var contract = {};
-        contract.name =  path.basename(filePath, '.se');
-        contract.functions = functionParser(text);
-        return contract;
+class Contract {
+    constructor(name, functions) {
+        this.name = name;
+        this.functions = functions;
     }
+}
 
-};
+
+export function parseFolder(folderPath, contractsReturn) {
+    const contracts = typeof contractsReturn !== "undefined" ? contractsReturn : [];
+    const files = fs.readdirSync(folderPath);
+    files.forEach(function (file) {
+        if (file[0] !== ".") {
+            const filePath = folderPath + "/" + file;
+            const stat = fs.statSync(filePath);
+            if (stat.isDirectory()) {
+                this.parseFolder(filePath, contracts);
+            } else {
+                contracts.push(this.parseFile(filePath));
+            }
+        }
+    }, this);
+    return contracts;
+}
+
+export function parseFile(filePath) {
+    const text = fs.readFileSync(filePath, "utf8");
+    const name = path.basename(filePath, ".se");
+    const functions = functionParser(text);
+    return new Contract(name, functions);
+}
+

@@ -1,83 +1,144 @@
-var contracts = require("augur-contracts");
-var serpentParser = require("./serpent-contract-parser.js");
-var tx = contracts.Tx(2); //passing the network 2 from contracts
-var serpentContracts = serpentParser.parseFolder("./augur-core/src");
-var fs = require("fs");
+"use strict";
+require("babel-core/register");
+const contracts = require("augur-contracts");
+const serpentParser = require("./serpent-contract-parser.js");
+const fs = require("fs");
 
-var returnContracts  = new Array();
 
-var generateInputParameters = function(signature, joinedParameterNames){
-    var parameterNames = joinedParameterNames.split(',');
-    var params = new Array();
-    var signatureArray = signature.split('');
-    for (var index = 0; index < parameterNames.length; index++) {
-        var parameterName = parameterNames[index].trim();
-        
-        if(parameterName.indexOf(':') > -1){
-            parameterName = parameterName.substring(0, parameterName.indexOf(':')).trim();
+class Contract {
+    constructor(name, address) {
+        this.name = name;
+        this.address = address;
+        this.functions = [];
+    }
+    addFunction(func) {
+        this.functions.push(func);
+    }
+}
+
+class ABIFunction {
+    constructor(name) {
+        this.name = name;
+        this.type = "function";
+        this.serpent = true;
+        this.constant = false;
+    }
+}
+
+class Function {   
+    constructor(functionName, parameters, signature, returns, send) {
+        this.functionName = functionName;
+        this.parameters = parameters;
+        this.signature = signature;
+        this.returns = returns;
+        this.send = send;
+    }
+    
+    generateABIFunction() {
+        this.abi = new ABIFunction(this.functionName);
+        if (typeof this.parameters !== "undefined" &&
+            this.parameters !== "" && typeof this.signature !== "undefined") {
+            this.abi.input = this.generateInputParameters(this.signature, this.parameters);
         }
-        
-        var param = {};
-        param.name = parameterName;
-        param.signature = signatureArray[index];
-        switch (param.signature) {
-            case 'i':
-                 param.type = 'int';
+        if (typeof this.returns !== "undefined"){
+            this.output = this.generateOutputParameters(this.returns);
+        }
+    }
+    
+    generateOutputParameters(output) {
+        const paramsOutput = [];
+        const paramOutput = {};
+        paramsOutput.push(paramOutput);
+        switch (output) {
+        case "hash[]":
+            paramOutput.type = "bytes32[]";
             break;
-            case 's':
-                param.type = 'string';
+        case "number":
+            paramOutput.type = "int";
             break;
-            case 'a':
-                param.type = 'bytes32[]'
-            break; 
+        case "unfix":
+            paramOutput.type = "int";
+            break;
+        case "address":
+            paramOutput.type = "address";
+            break;
+        case "address[]":
+            paramOutput.type = "address[]";
+            break;
+        case "hash":
+            paramOutput.type = "bytes32";
+            break;
+        case "number[]":
+            paramOutput.type = "int[]";
+            break;
+        default:
+            break;
+        }
+        return paramsOutput;
+    }
+    
+    generateInputParameters(signature, joinedParameterNames) {
+        const parameterNames = joinedParameterNames.split(",");
+        const params = [];
+        const signatureArray = signature.split("");
+        for (let index = 0; index < parameterNames.length; index++) {
+            let parameterName = parameterNames[index].trim();
+            if (parameterName.indexOf(":") > -1) {
+                parameterName = parameterName.substring(0, parameterName.indexOf(":")).trim();
+            }
+            let param = {};
+            param.name = parameterName;
+            param.signature = signatureArray[index];
+            switch (param.signature) {
+            case "i":
+                param.type = "int";
+                break;
+            case "s":
+                param.type = "string";
+                break;
+            case "a":
+                param.type = "bytes32[]";
+                break;
             default:
-                
-            break;
+                break;
+            }
+            params.push(param);
         }
-        params.push(param);
+        return params;
     }
-    return params;
 }
 
-var generateABIFunction = function(serpentFuction){
-    var func = {};
-    func.name = serpentFuction.functionName;
-    func.type = "function";
-    func.serpent = true;
-    func.constant = false;
-    if(typeof serpentFuction.parameters !== 'undefined' && serpentFuction.parameters != '' && typeof serpentFuction.signature !== 'undefined') {
-        func.input = generateInputParameters(serpentFuction.signature, serpentFuction.parameters);
-    }
-    return func;
-}
+const tx = contracts.Tx(2); // passing the network 2 from contracts
 
-Object.keys(tx).forEach(function(key){
-    var txElement = tx[key];
-    serpentContracts.forEach(function(contract) {
-       var functions = contract.functions;
-       functions.forEach(function(func) {
-           if(func.functionName === txElement.method){
-               func.signature = txElement.signature;
-               func.returns = txElement.returns;
-               contract.to = txElement.to;
-               func.send = txElement.send;
-               
-                func.abi = generateABIFunction(func);
-               
-               
-               if(returnContracts.indexOf(contract) === -1){
-                   returnContracts.push(contract);
-               }
-           }
-       }, this);
+const serpentContracts = serpentParser.parseFolder("./augur-core/src");
+
+const returnContracts = [];
+
+Object.keys(tx).forEach(function(key) {
+    const txElement = tx[key];
+    serpentContracts.forEach(function(serpentContract) {
+        let serpentFunctions = serpentContract.functions;
+        serpentFunctions.forEach(function(serpentFunction) {
+            if (serpentFunction.functionName === txElement.method) {
+                let func = new Function(serpentFunction.functionName, serpentFunction.parameters, txElement.signature, txElement.returns, txElement.send);
+                func.generateABIFunction();
+                const matchContract = returnContracts.filter(function(value) {
+                    return value.address === tx.to;
+                });
+                let returnContract = null;
+                if (matchContract.length > 0){
+                    returnContract = matchContract[0];
+                } else {
+                    returnContract = new Contract(serpentContract.name, txElement.to);
+                    returnContracts.push(returnContract);
+                }
+                returnContract.addFunction(func);
+            }
+        }, this);
     }, this);
 });
 
 
 
-fs.writeFileSync("contractsInfo.json", JSON.stringify(returnContracts, null, 4), 'utf8');
- 
+fs.writeFileSync("contractsInfo.json", JSON.stringify(returnContracts, null, 4), "utf8");
 console.log("check contractsInfo.json");
-
-
-
