@@ -12,7 +12,14 @@ class Contract {
         this.functions = [];
     }
     addFunction(func) {
-        this.functions.push(func);
+          const matchFunction = this.functions.filter(function(value) {
+                    return value.functionName === func.functionName;
+                });
+               
+                if (matchFunction.length <= 0){
+                     this.functions.push(func);
+                }
+       
     }
 }
 
@@ -22,6 +29,8 @@ class ABIFunction {
         this.type = "function";
         this.serpent = true;
         this.constant = false;
+        this.inputs = [];
+        this.outputs = [];
     }
 }
 
@@ -36,18 +45,20 @@ class Function {
     
     generateABIFunction() {
         this.abi = new ABIFunction(this.functionName);
+        
         if (typeof this.parameters !== "undefined" &&
             this.parameters !== "" && typeof this.signature !== "undefined") {
-            this.abi.input = this.generateInputParameters(this.signature, this.parameters);
+            this.abi.inputs = this.generateInputParameters(this.signature, this.parameters);
         }
         if (typeof this.returns !== "undefined"){
-            this.output = this.generateOutputParameters(this.returns);
+            this.abi.outputs = this.generateOutputParameters(this.returns);
         }
     }
     
     generateOutputParameters(output) {
         const paramsOutput = [];
         const paramOutput = {};
+        paramOutput.name = "";
         paramsOutput.push(paramOutput);
         switch (output) {
         case "hash[]":
@@ -72,6 +83,7 @@ class Function {
             paramOutput.type = "int[]";
             break;
         default:
+             paramOutput.type = "bytes32";
             break;
         }
         return paramsOutput;
@@ -100,6 +112,7 @@ class Function {
                 param.type = "bytes32[]";
                 break;
             default:
+                 param.type = "bytes32";
                 break;
             }
             params.push(param);
@@ -120,10 +133,10 @@ Object.keys(tx).forEach(function(key) {
         let serpentFunctions = serpentContract.functions;
         serpentFunctions.forEach(function(serpentFunction) {
             if (serpentFunction.functionName === txElement.method) {
-                let func = new Function(serpentFunction.functionName, serpentFunction.parameters, txElement.signature, txElement.returns, txElement.send);
+                const func = new Function(serpentFunction.functionName, serpentFunction.parameters, txElement.signature, txElement.returns, txElement.send);
                 func.generateABIFunction();
                 const matchContract = returnContracts.filter(function(value) {
-                    return value.address === tx.to;
+                    return value.address === txElement.to;
                 });
                 let returnContract = null;
                 if (matchContract.length > 0){
